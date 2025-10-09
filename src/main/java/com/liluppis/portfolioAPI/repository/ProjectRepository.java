@@ -2,6 +2,11 @@ package com.liluppis.portfolioAPI.repository;
 
 import com.liluppis.portfolioAPI.model.Project;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-public abstract class ProjectRepository implements MongoRepository<Project, String> {
+import java.util.Optional;
+
+public interface ProjectRepository extends MongoRepository<Project, String> {
+    Optional<Project> findById(String id);
+    Optional<Project> findByName(String name);
 }

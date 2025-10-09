@@ -2,7 +2,9 @@ package com.liluppis.portfolioAPI.mapper;
 
 import com.liluppis.portfolioAPI.dto.ProjectDTO;
 import com.liluppis.portfolioAPI.model.Project;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProjectMapper {
 
     public ProjectDTO toDTO(Project project) {
