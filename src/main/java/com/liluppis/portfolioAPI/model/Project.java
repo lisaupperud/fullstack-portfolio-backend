@@ -1,7 +1,6 @@
 package com.liluppis.portfolioAPI.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -10,6 +9,9 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Document(collection = "projects")
 public class Project {
 
@@ -25,15 +27,5 @@ public class Project {
     private List<String> tags;
     @Field(name = "iconKey")
     private String iconKey;
-
-    public Project() {}
-
-    public Project(String name, String desc, String link, List<String> tags, String iconKey) {
-        this.name = name;
-        this.desc = desc;
-        this.link = link;
-        this.tags = tags;
-        this.iconKey = iconKey;
-    }
 
 }
