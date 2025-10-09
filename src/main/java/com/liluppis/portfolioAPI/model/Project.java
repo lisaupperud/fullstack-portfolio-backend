@@ -33,6 +33,7 @@ public class Project {
         this.desc = desc;
         this.link = link;
         this.tags = tags;
+        this.iconKey = iconKey;
     }
 
 }
