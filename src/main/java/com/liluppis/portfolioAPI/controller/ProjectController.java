@@ -2,7 +2,6 @@ package com.liluppis.portfolioAPI.controller;
 
 import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
-import com.liluppis.portfolioAPI.mapper.ProjectMapper;
 import com.liluppis.portfolioAPI.service.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class ProjectController {
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = _service.getProject(id);
         if (foundProject.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(foundProject);
     }
@@ -36,7 +35,7 @@ public class ProjectController {
     public ResponseEntity<List<ProjectResponseDTO>> findAll() {
         List<ProjectResponseDTO> projects = _service.getAllProjects();
         if (projects.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(projects);
     }
@@ -45,7 +44,7 @@ public class ProjectController {
     public ResponseEntity<List<ProjectResponseDTO>> findByTag(@PathVariable String tag) {
         List<ProjectResponseDTO> projects = _service.getProjectsByTags(tag);
         if (projects.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(projects);
     }
