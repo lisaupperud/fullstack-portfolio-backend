@@ -61,13 +61,15 @@ public class ProjectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newProject);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<ProjectResponseDTO> updateProject(@RequestBody ProjectCreationDTO projectDTO) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ProjectResponseDTO> updateProject(@PathVariable String id, @RequestBody ProjectCreationDTO projectDTO) {
         if (projectDTO == null){
             return ResponseEntity.badRequest().build();
         }
 
-        return null;
+        Optional<ProjectResponseDTO> updatedProject = _service.updateProject(id,  projectDTO);
+
+        return updatedProject.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/delete/{id}")
