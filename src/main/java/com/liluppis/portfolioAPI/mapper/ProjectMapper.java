@@ -10,6 +10,7 @@ public class ProjectMapper {
 
     public ProjectResponseDTO toDTO(Project project) {
         return new ProjectResponseDTO(
+                project.id(),
                 project.name(),
                 project.desc(),
                 project.link(),

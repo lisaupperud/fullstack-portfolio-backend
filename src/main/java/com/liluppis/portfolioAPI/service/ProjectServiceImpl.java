@@ -19,7 +19,7 @@ public class ProjectServiceImpl implements IProjectService {
     private final ProjectMapper mapper;
 
     @Autowired
-    public ProjectServiceImpl(ProjectRepository projectRepository,  ProjectMapper mapper) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper mapper) {
         this.projectRepository = projectRepository;
         this.mapper = mapper;
     }
@@ -53,28 +53,22 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public Optional<ProjectResponseDTO> updateProject(String id, ProjectCreationDTO projectDTO) {
-        /*
+        return projectRepository.findById(id)
+                .map(existing ->
+                {
+                    Project updated = new Project(
+                            existing.id(),
+                            projectDTO.name() != null ? projectDTO.name() : existing.name(),
+                            projectDTO.desc() != null ? projectDTO.desc() : existing.desc(),
+                            projectDTO.link() != null ? projectDTO.link() : existing.link(),
+                            projectDTO.tags() != null ? projectDTO.tags() : existing.tags(),
+                            projectDTO.iconKey() != null ? projectDTO.iconKey() : existing.iconKey()
+                    );
 
-        if (taskDTO.getName() != null) {
-            existingTask.setName(taskDTO.getName());
-        }
-        if (taskDTO.getDescription() != null) {
-            existingTask.setDescription(taskDTO.getDescription());
-        }
-        if (taskDTO.getCompleted()) {
-            existingTask.setCompleted(taskDTO.getCompleted());
-        }
-        if (taskDTO.getTags() != null) {
-            existingTask.setTags(taskDTO.getTags());
-        }
-        if (taskDTO.getPriority() != null) {
-            existingTask.setPriority(taskDTO.getPriority());
-        }
+                    Project saved = projectRepository.save(updated);
 
-        Task updatedTask = taskRepository.save(existingTask);
-        return taskMapper.mapToTaskDTO(updatedTask);*/
-
-        return null;
+                    return mapper.toDTO(saved);
+                });
     }
 
     @Override
