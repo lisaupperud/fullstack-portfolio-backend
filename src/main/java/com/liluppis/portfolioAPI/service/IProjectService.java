@@ -1,10 +1,11 @@
 package com.liluppis.portfolioAPI.service;
 
-import com.liluppis.portfolioAPI.dto.ProjectDTO;
+import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
 
 import java.util.Optional;
 
 public interface IProjectService {
-    public Optional<ProjectDTO> getProject(String id);
-    public ProjectDTO save(ProjectDTO projectDTO);
+    Optional<ProjectCreationDTO> getProject(String id);
+    ProjectCreationDTO save(ProjectCreationDTO projectDTO);
+
 }

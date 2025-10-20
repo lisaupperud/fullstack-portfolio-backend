@@ -1,6 +1,6 @@
 package com.liluppis.portfolioAPI.service;
 
-import com.liluppis.portfolioAPI.dto.ProjectDTO;
+import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.mapper.ProjectMapper;
 import com.liluppis.portfolioAPI.model.Project;
 import com.liluppis.portfolioAPI.repository.ProjectRepository;
@@ -22,13 +22,13 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public Optional<ProjectDTO> getProject(String id) {
+    public Optional<ProjectCreationDTO> getProject(String id) {
         Optional<Project> project = projectRepository.findById(id);
         return project.map(mapper::toDTO);
     }
 
     @Override
-    public ProjectDTO save(ProjectDTO projectDTO) {
+    public ProjectCreationDTO save(ProjectCreationDTO projectDTO) {
         Project project =  mapper.toEntity(projectDTO);
         projectRepository.save(project);
         return projectDTO;

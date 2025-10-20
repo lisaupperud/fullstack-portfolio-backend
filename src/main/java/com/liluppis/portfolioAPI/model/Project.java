@@ -7,25 +7,20 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Document(collection = "projects")
-public class Project {
-
-    @Id
-    private String id;
-    @Field(name = "projectName")
-    private String name;
-    @Field(name = "description")
-    private String desc;
-    @Field(name = "link")
-    private String link;
-    @Field(name = "tags")
-    private List<String> tags;
-    @Field(name = "iconKey")
-    private String iconKey;
-
+public record Project(
+        @Id
+        String id,
+        @Field(name = "projectName")
+        String name,
+        @Field(name = "description")
+        String desc,
+        @Field(name = "link")
+        String link,
+        @Field(name = "tags")
+        List<String> tags,
+        @Field(name = "iconKey")
+        String iconKey
+) {
 }

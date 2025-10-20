@@ -1,29 +1,29 @@
 package com.liluppis.portfolioAPI.mapper;
 
-import com.liluppis.portfolioAPI.dto.ProjectDTO;
+import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.model.Project;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProjectMapper {
 
-    public ProjectDTO toDTO(Project project) {
-        return new ProjectDTO(
-                project.getName(),
-                project.getDesc(),
-                project.getLink(),
-                project.getTags(),
-                project.getIconKey()
+    public ProjectCreationDTO toDTO(Project project) {
+        return new ProjectCreationDTO(
+                project.name(),
+                project.desc(),
+                project.link(),
+                project.tags(),
+                project.iconKey()
         );
     }
 
-    public Project toEntity(ProjectDTO dto) {
+    public Project toEntity(ProjectCreationDTO dto) {
         return Project.builder()
-                .name(dto.getName())
-                .desc(dto.getDesc())
-                .link(dto.getLink())
-                .tags(dto.getTags())
-                .iconKey(dto.getIconKey())
+                .name(dto.name())
+                .desc(dto.desc())
+                .link(dto.link())
+                .tags(dto.tags())
+                .iconKey(dto.iconKey())
                 .build();
     }
 }
