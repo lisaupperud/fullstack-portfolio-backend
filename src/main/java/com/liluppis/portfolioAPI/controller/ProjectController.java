@@ -26,10 +26,10 @@ public class ProjectController {
         _mapper = mapper;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = _service.getProject(id);
-        if (foundProject.isPresent()) {
+        if (foundProject.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok().body(foundProject);
