@@ -72,7 +72,14 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public Optional<Void> deleteProject(String id) {
-        return Optional.empty();
+    public boolean deleteProject(String id) {
+        Project projectToBeDeleted = projectRepository.findById(id).orElse(null);
+
+        if (projectToBeDeleted != null) {
+            projectRepository.delete(projectToBeDeleted);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -23,7 +23,7 @@ public interface IProjectService {
     Optional<ProjectResponseDTO> updateProject(String id, ProjectCreationDTO projectDTO);
 
     // DELETE project by ID
-    Optional<Void> deleteProject(String id);
+    boolean deleteProject(String id);
 
 
 }

@@ -73,7 +73,11 @@ public class ProjectController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<ProjectResponseDTO> deleteProject(@PathVariable String id) {
-        return null;
+    public ResponseEntity<Boolean> deleteProject(@PathVariable String id) {
+        if (_service.deleteProject(id)){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }
