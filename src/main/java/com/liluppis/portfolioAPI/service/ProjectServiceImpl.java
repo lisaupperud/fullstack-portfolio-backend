@@ -39,20 +39,42 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public List<ProjectResponseDTO> getProjectsByTags(List<String> tags) {
-        return List.of();
+    public List<ProjectResponseDTO> getProjectsByTags(String tag) {
+        return projectRepository.findByTags(tag)
+                .stream()
+                .map(mapper::toDTO)
+                .collect((Collectors.toList()));
     }
 
     @Override
-    public ProjectCreationDTO saveProject(ProjectCreationDTO projectDTO) {
-        Project project =  mapper.toEntity(projectDTO);
-        projectRepository.save(project);
-        return projectDTO;
+    public ProjectResponseDTO saveProject(ProjectCreationDTO projectDTO) {
+        return mapper.toDTO(projectRepository.save(mapper.toEntity(projectDTO)));
     }
 
     @Override
-    public Optional<ProjectCreationDTO> updateProject(String id, ProjectCreationDTO projectDTO) {
-        return Optional.empty();
+    public Optional<ProjectResponseDTO> updateProject(String id, ProjectCreationDTO projectDTO) {
+        /*
+
+        if (taskDTO.getName() != null) {
+            existingTask.setName(taskDTO.getName());
+        }
+        if (taskDTO.getDescription() != null) {
+            existingTask.setDescription(taskDTO.getDescription());
+        }
+        if (taskDTO.getCompleted()) {
+            existingTask.setCompleted(taskDTO.getCompleted());
+        }
+        if (taskDTO.getTags() != null) {
+            existingTask.setTags(taskDTO.getTags());
+        }
+        if (taskDTO.getPriority() != null) {
+            existingTask.setPriority(taskDTO.getPriority());
+        }
+
+        Task updatedTask = taskRepository.save(existingTask);
+        return taskMapper.mapToTaskDTO(updatedTask);*/
+
+        return null;
     }
 
     @Override
