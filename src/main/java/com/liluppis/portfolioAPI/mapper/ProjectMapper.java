@@ -1,14 +1,15 @@
 package com.liluppis.portfolioAPI.mapper;
 
 import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
+import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.model.Project;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProjectMapper {
 
-    public ProjectCreationDTO toDTO(Project project) {
-        return new ProjectCreationDTO(
+    public ProjectResponseDTO toDTO(Project project) {
+        return new ProjectResponseDTO(
                 project.name(),
                 project.desc(),
                 project.link(),
@@ -18,12 +19,13 @@ public class ProjectMapper {
     }
 
     public Project toEntity(ProjectCreationDTO dto) {
-        return Project.builder()
-                .name(dto.name())
-                .desc(dto.desc())
-                .link(dto.link())
-                .tags(dto.tags())
-                .iconKey(dto.iconKey())
-                .build();
+        return new Project(
+                null,
+                dto.name(),
+                dto.desc(),
+                dto.link(),
+                dto.tags(),
+                dto.iconKey()
+        );
     }
 }
