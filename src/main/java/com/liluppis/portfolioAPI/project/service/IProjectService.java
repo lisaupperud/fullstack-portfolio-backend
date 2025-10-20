@@ -1,7 +1,7 @@
-package com.liluppis.portfolioAPI.service;
+package com.liluppis.portfolioAPI.project.service;
 
-import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
-import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
+import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
+import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
 
 import java.util.List;
 import java.util.Optional;

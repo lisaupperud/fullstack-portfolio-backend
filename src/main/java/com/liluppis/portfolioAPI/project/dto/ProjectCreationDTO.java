@@ -1,4 +1,4 @@
-package com.liluppis.portfolioAPI.dto;
+package com.liluppis.portfolioAPI.project.dto;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.liluppis.portfolioAPI.advice;
+package com.liluppis.portfolioAPI.project.advice;
 
-import com.liluppis.portfolioAPI.advice.dto.ApiErrorResponse;
-import com.liluppis.portfolioAPI.advice.dto.ValidationError;
-import com.liluppis.portfolioAPI.advice.exception.ProjectNotFoundException;
+import com.liluppis.portfolioAPI.project.advice.dto.ApiErrorResponse;
+import com.liluppis.portfolioAPI.project.advice.dto.ValidationError;
+import com.liluppis.portfolioAPI.project.advice.exception.ProjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

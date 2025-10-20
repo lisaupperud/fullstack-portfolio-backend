@@ -1,6 +1,6 @@
-package com.liluppis.portfolioAPI.repository;
+package com.liluppis.portfolioAPI.project.repository;
 
-import com.liluppis.portfolioAPI.model.Project;
+import com.liluppis.portfolioAPI.project.model.Project;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

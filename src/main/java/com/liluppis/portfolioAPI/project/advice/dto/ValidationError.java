@@ -1,4 +1,4 @@
-package com.liluppis.portfolioAPI.advice.dto;
+package com.liluppis.portfolioAPI.project.advice.dto;
 
 public record ValidationError(
         String field,

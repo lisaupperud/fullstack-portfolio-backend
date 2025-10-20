@@ -1,10 +1,10 @@
-package com.liluppis.portfolioAPI.service;
+package com.liluppis.portfolioAPI.project.service;
 
-import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
-import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
-import com.liluppis.portfolioAPI.mapper.ProjectMapper;
-import com.liluppis.portfolioAPI.model.Project;
-import com.liluppis.portfolioAPI.repository.ProjectRepository;
+import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
+import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
+import com.liluppis.portfolioAPI.project.mapper.ProjectMapper;
+import com.liluppis.portfolioAPI.project.model.Project;
+import com.liluppis.portfolioAPI.project.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

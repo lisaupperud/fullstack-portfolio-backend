@@ -1,8 +1,8 @@
-package com.liluppis.portfolioAPI.controller;
+package com.liluppis.portfolioAPI.project.controller;
 
-import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
-import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
-import com.liluppis.portfolioAPI.service.ProjectServiceImpl;
+import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
+import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
+import com.liluppis.portfolioAPI.project.service.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

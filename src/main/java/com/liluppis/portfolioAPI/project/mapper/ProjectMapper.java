@@ -1,8 +1,8 @@
-package com.liluppis.portfolioAPI.mapper;
+package com.liluppis.portfolioAPI.project.mapper;
 
-import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
-import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
-import com.liluppis.portfolioAPI.model.Project;
+import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
+import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
+import com.liluppis.portfolioAPI.project.model.Project;
 import org.springframework.stereotype.Component;
 
 @Component

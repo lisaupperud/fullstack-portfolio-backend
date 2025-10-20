@@ -1,4 +1,4 @@
-package com.liluppis.portfolioAPI.model;
+package com.liluppis.portfolioAPI.project.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
