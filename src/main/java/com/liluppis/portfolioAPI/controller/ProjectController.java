@@ -23,7 +23,7 @@ public class ProjectController {
         _service = service;
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = _service.getProject(id);
         if (foundProject.isEmpty()) {
@@ -41,9 +41,13 @@ public class ProjectController {
         return ResponseEntity.ok(projects);
     }
 
-    @GetMapping("/{tag}")
+    @GetMapping("/find/{tag}")
     public ResponseEntity<List<ProjectResponseDTO>> findByTag(@PathVariable String tag) {
-        return null;
+        List<ProjectResponseDTO> projects = _service.getProjectsByTags(tag);
+        if (projects.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return ResponseEntity.ok(projects);
     }
 
     @PostMapping("/create")
