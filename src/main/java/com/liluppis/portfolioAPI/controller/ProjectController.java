@@ -3,7 +3,6 @@ package com.liluppis.portfolioAPI.controller;
 import com.liluppis.portfolioAPI.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.mapper.ProjectMapper;
-import com.liluppis.portfolioAPI.model.Project;
 import com.liluppis.portfolioAPI.service.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +17,10 @@ import java.util.Optional;
 public class ProjectController {
 
     private final ProjectServiceImpl _service;
-    private final ProjectMapper _mapper;
 
     @Autowired
-    public ProjectController(ProjectServiceImpl service,  ProjectMapper mapper) {
+    public ProjectController(ProjectServiceImpl service) {
         _service = service;
-        _mapper = mapper;
     }
 
     @GetMapping("/find/{id}")
