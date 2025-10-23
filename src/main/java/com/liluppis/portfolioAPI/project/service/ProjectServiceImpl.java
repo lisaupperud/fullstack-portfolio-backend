@@ -56,6 +56,7 @@ public class ProjectServiceImpl implements IProjectService {
             throw new EmptyListException("Project list is empty");
         }
 
+        log.info("Project list found");
         return projectList;
 
         // return projectRepository.findAll().stream().map(mapper::toDTO).collect((Collectors.toList()));
@@ -70,6 +71,8 @@ public class ProjectServiceImpl implements IProjectService {
         if (projectList.isEmpty()) {
             throw new EmptyListException("Project list is empty");
         }
+
+        log.info("Project list by Tags found");
 
         return projectList;
 
