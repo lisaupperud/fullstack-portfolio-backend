@@ -4,6 +4,7 @@ import com.liluppis.portfolioAPI.project.advice.dto.ApiErrorResponse;
 import com.liluppis.portfolioAPI.project.advice.dto.ValidationError;
 import com.liluppis.portfolioAPI.project.advice.exception.EmptyListException;
 import com.liluppis.portfolioAPI.project.advice.exception.ProjectNotFoundException;
+import com.liluppis.portfolioAPI.project.advice.exception.ResourceAlreadyExistsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -53,7 +54,6 @@ public class GlobalExceptionHandler {
 
         log.warn(e.getMessage());
 
-
         ApiErrorResponse errorResponse = new ApiErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 e.getMessage(),
@@ -70,7 +70,6 @@ public class GlobalExceptionHandler {
 
         log.warn(e.getMessage());
 
-
         ApiErrorResponse errorResponse = new ApiErrorResponse(
                 HttpStatus.NO_CONTENT.value(),
                 e.getMessage(),
@@ -79,6 +78,22 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
+                .body(errorResponse);
+    }
+
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<ApiErrorResponse> handleResourceAlreadyExistsException(ResourceAlreadyExistsException e) {
+
+        log.warn(e.getMessage());
+
+        ApiErrorResponse errorResponse = new ApiErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                e.getMessage(),
+                List.of()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .body(errorResponse);
     }
 

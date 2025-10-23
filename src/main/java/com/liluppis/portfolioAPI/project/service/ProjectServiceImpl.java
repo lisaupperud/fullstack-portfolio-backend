@@ -2,6 +2,7 @@ package com.liluppis.portfolioAPI.project.service;
 
 import com.liluppis.portfolioAPI.project.advice.exception.EmptyListException;
 import com.liluppis.portfolioAPI.project.advice.exception.ProjectNotFoundException;
+import com.liluppis.portfolioAPI.project.advice.exception.ResourceAlreadyExistsException;
 import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.project.mapper.ProjectMapper;
@@ -84,6 +85,15 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public ProjectResponseDTO saveProject(ProjectCreationDTO projectDTO) {
+        // check if project.name() already exists
+
+        List<ProjectResponseDTO> projectList = projectRepository.findAll().stream().map(mapper::toDTO).toList();
+
+        // TODO: IMPLEMENT QUERY
+        if (projectList.contains(projectDTO.name())) {
+            throw new ResourceAlreadyExistsException("Resource with " + projectDTO.name() + " already exists");
+        }
+
         return mapper.toDTO(projectRepository.save(mapper.toEntity(projectDTO)));
     }
 
