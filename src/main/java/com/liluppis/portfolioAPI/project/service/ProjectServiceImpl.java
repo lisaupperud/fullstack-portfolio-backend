@@ -1,5 +1,7 @@
 package com.liluppis.portfolioAPI.project.service;
 
+import com.liluppis.portfolioAPI.project.advice.exception.EmptyListException;
+import com.liluppis.portfolioAPI.project.advice.exception.ProjectNotFoundException;
 import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.project.mapper.ProjectMapper;
@@ -26,24 +28,50 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public Optional<ProjectResponseDTO> getProject(String id) {
-        return projectRepository.findById(id).map(mapper::toDTO);
+
+        Optional<ProjectResponseDTO> project = projectRepository
+                .findById(id)
+                .map(mapper::toDTO);
+
+        if (project.isEmpty()) {
+            throw new ProjectNotFoundException("Project with id {" + id + "} not found");
+        }
+
+        return project;
+
+        // return projectRepository.findById(id).map(mapper::toDTO).orElseThrow();
     }
 
     @Override
     public List<ProjectResponseDTO> getAllProjects() {
-        return projectRepository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect((Collectors.toList()));
+
+        List<ProjectResponseDTO> projectList = projectRepository.findAll().stream().map(mapper::toDTO).toList();
+
+        if (projectList.isEmpty()) {
+            throw new EmptyListException("Project list is empty");
+        }
+
+        return projectList;
+
+        // return projectRepository.findAll().stream().map(mapper::toDTO).collect((Collectors.toList()));
 
     }
 
     @Override
     public List<ProjectResponseDTO> getProjectsByTags(String tag) {
-        return projectRepository.findByTags(tag)
+
+        List<ProjectResponseDTO> projectList = projectRepository.findByTags(tag).stream().map(mapper::toDTO).toList();
+
+        if (projectList.isEmpty()) {
+            throw new EmptyListException("Project list is empty");
+        }
+
+        return projectList;
+
+        /* return projectRepository.findByTags(tag)
                 .stream()
                 .map(mapper::toDTO)
-                .collect((Collectors.toList()));
+                .collect((Collectors.toList())); */
     }
 
     @Override

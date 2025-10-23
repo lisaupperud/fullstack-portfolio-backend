@@ -15,16 +15,16 @@ import java.util.Optional;
 @RequestMapping("/api/v1/projects")
 public class ProjectController {
 
-    private final ProjectServiceImpl _service;
+    private final ProjectServiceImpl service;
 
     @Autowired
     public ProjectController(ProjectServiceImpl service) {
-        _service = service;
+        this.service = service;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
-        Optional<ProjectResponseDTO> foundProject = _service.getProject(id);
+        Optional<ProjectResponseDTO> foundProject = service.getProject(id);
         if (foundProject.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -33,7 +33,7 @@ public class ProjectController {
 
     @GetMapping("/")
     public ResponseEntity<List<ProjectResponseDTO>> findAll() {
-        List<ProjectResponseDTO> projects = _service.getAllProjects();
+        List<ProjectResponseDTO> projects = service.getAllProjects();
         if (projects.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -42,7 +42,7 @@ public class ProjectController {
 
     @GetMapping("/find/{tag}")
     public ResponseEntity<List<ProjectResponseDTO>> findByTag(@PathVariable String tag) {
-        List<ProjectResponseDTO> projects = _service.getProjectsByTags(tag);
+        List<ProjectResponseDTO> projects = service.getProjectsByTags(tag);
         if (projects.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -55,7 +55,7 @@ public class ProjectController {
             return ResponseEntity.badRequest().build();
         }
 
-        ProjectResponseDTO newProject = _service.saveProject(projectDTO);
+        ProjectResponseDTO newProject = service.saveProject(projectDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(newProject);
     }
@@ -66,14 +66,14 @@ public class ProjectController {
             return ResponseEntity.badRequest().build();
         }
 
-        Optional<ProjectResponseDTO> updatedProject = _service.updateProject(id,  projectDTO);
+        Optional<ProjectResponseDTO> updatedProject = service.updateProject(id,  projectDTO);
 
         return updatedProject.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteProject(@PathVariable String id) {
-        if (_service.deleteProject(id)){
+        if (service.deleteProject(id)){
             return ResponseEntity.noContent().build();
         }
 
