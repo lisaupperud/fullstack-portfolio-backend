@@ -90,7 +90,7 @@ public class ProjectServiceImpl implements IProjectService {
         List<ProjectResponseDTO> projectList = projectRepository.findAll().stream().map(mapper::toDTO).toList();
 
         // TODO: IMPLEMENT QUERY
-        if (projectList.contains(projectDTO.name())) {
+        if (projectRepository.existsByName(projectDTO.name())) {
             throw new ResourceAlreadyExistsException("Resource with " + projectDTO.name() + " already exists");
         }
 

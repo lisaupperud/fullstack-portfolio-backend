@@ -12,4 +12,5 @@ public interface ProjectRepository extends MongoRepository<Project, String> {
     Optional<Project> findById(String id);
     @Query("{'tags': ?0}")
     List<Project> findByTags(String tag);
+    boolean existsByName(String name);
 }
