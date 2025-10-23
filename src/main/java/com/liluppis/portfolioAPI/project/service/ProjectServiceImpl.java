@@ -85,15 +85,12 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public ProjectResponseDTO saveProject(ProjectCreationDTO projectDTO) {
-        // check if project.name() already exists
 
-        List<ProjectResponseDTO> projectList = projectRepository.findAll().stream().map(mapper::toDTO).toList();
-
-        // TODO: IMPLEMENT QUERY
         if (projectRepository.existsByName(projectDTO.name())) {
             throw new ResourceAlreadyExistsException("Resource with " + projectDTO.name() + " already exists");
         }
 
+        log.info("Saving project with name '{}'", projectDTO.name());
         return mapper.toDTO(projectRepository.save(mapper.toEntity(projectDTO)));
     }
 

@@ -52,6 +52,7 @@ public class ProjectController {
 
     @PostMapping("/create")
     public ResponseEntity<ProjectResponseDTO> createProject(@Valid @RequestBody ProjectCreationDTO projectDTO) {
+
         if (projectDTO == null){
             return ResponseEntity.badRequest().build();
         }
@@ -63,6 +64,7 @@ public class ProjectController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<ProjectResponseDTO> updateProject(@PathVariable String id, @RequestBody ProjectCreationDTO projectDTO) {
+
         if (projectDTO == null){
             return ResponseEntity.badRequest().build();
         }
