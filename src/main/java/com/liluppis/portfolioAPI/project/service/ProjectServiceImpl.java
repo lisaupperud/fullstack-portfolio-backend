@@ -77,10 +77,10 @@ public class ProjectServiceImpl implements IProjectService {
 
         return projectList;
 
-        /* return projectRepository.findByTags(tag)
+        /*return projectRepository.findByTags(tag)
                 .stream()
                 .map(mapper::toDTO)
-                .collect((Collectors.toList())); */
+                .collect((Collectors.toList()));*/
     }
 
     @Override
@@ -95,31 +95,33 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public Optional<ProjectResponseDTO> updateProject(String id, ProjectCreationDTO projectDTO) {
-        return projectRepository.findById(id)
-                .map(existing ->
-                {
-                    Project updated = new Project(
-                            existing.id(),
-                            projectDTO.name() != null ? projectDTO.name() : existing.name(),
-                            projectDTO.desc() != null ? projectDTO.desc() : existing.desc(),
-                            projectDTO.link() != null ? projectDTO.link() : existing.link(),
-                            projectDTO.tags() != null ? projectDTO.tags() : existing.tags(),
-                            projectDTO.iconKey() != null ? projectDTO.iconKey() : existing.iconKey()
-                    );
+    public ProjectResponseDTO updateProject(String id, ProjectCreationDTO projectDTO) {
 
-                    Project saved = projectRepository.save(updated);
+        Project existing = projectRepository.findById(id)
+                .orElseThrow(() -> new ProjectNotFoundException("Project with id {" + id + "} not found"));
 
-                    return mapper.toDTO(saved);
-                });
+        Project updated = new Project(
+                existing.id(),
+                projectDTO.name() != null ? projectDTO.name() : existing.name(),
+                projectDTO.desc() != null ? projectDTO.desc() : existing.desc(),
+                projectDTO.link() != null ? projectDTO.link() : existing.link(),
+                projectDTO.tags() != null ? projectDTO.tags() : existing.tags(),
+                projectDTO.iconKey() != null ? projectDTO.iconKey() : existing.iconKey()
+        );
+
+        Project saved = projectRepository.save(updated);
+        log.info("Project with id {} updated", id);
+        return mapper.toDTO(saved);
     }
 
     @Override
     public boolean deleteProject(String id) {
-        Project projectToBeDeleted = projectRepository.findById(id).orElse(null);
+        Project projectToBeDeleted = projectRepository.findById(id).orElse(null); // TODO:
+        // throw ProjectNotFoundException
 
         if (projectToBeDeleted != null) {
             projectRepository.delete(projectToBeDeleted);
+            // TODO: add logger
             return true;
         }
 

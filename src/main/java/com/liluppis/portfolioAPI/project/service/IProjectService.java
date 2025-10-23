@@ -20,7 +20,7 @@ public interface IProjectService {
     ProjectResponseDTO saveProject(ProjectCreationDTO projectDTO);
 
     // PUT existing project
-    Optional<ProjectResponseDTO> updateProject(String id, ProjectCreationDTO projectDTO);
+    ProjectResponseDTO updateProject(String id, ProjectCreationDTO projectDTO);
 
     // DELETE project by ID
     boolean deleteProject(String id);

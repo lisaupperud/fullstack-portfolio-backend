@@ -69,9 +69,9 @@ public class ProjectController {
             return ResponseEntity.badRequest().build();
         }
 
-        Optional<ProjectResponseDTO> updatedProject = service.updateProject(id,  projectDTO);
+        ProjectResponseDTO updatedProject = service.updateProject(id,  projectDTO);
 
-        return updatedProject.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return ResponseEntity.ok(updatedProject);
     }
 
     @DeleteMapping("/delete/{id}")
