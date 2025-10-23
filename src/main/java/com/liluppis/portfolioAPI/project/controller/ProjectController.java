@@ -3,6 +3,7 @@ package com.liluppis.portfolioAPI.project.controller;
 import com.liluppis.portfolioAPI.project.dto.ProjectCreationDTO;
 import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.project.service.ProjectServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,7 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectCreationDTO projectDTO) {
+    public ResponseEntity<ProjectResponseDTO> createProject(@Valid @RequestBody ProjectCreationDTO projectDTO) {
         if (projectDTO == null){
             return ResponseEntity.badRequest().build();
         }
