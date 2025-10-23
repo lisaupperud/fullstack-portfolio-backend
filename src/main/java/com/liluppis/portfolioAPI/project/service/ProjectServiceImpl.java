@@ -116,12 +116,12 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public boolean deleteProject(String id) {
-        Project projectToBeDeleted = projectRepository.findById(id).orElse(null); // TODO:
-        // throw ProjectNotFoundException
+        Project projectToBeDeleted = projectRepository.findById(id)
+                .orElseThrow(() -> new ProjectNotFoundException("Project with id {" + id + "} not found"));
 
         if (projectToBeDeleted != null) {
             projectRepository.delete(projectToBeDeleted);
-            // TODO: add logger
+            log.info("Project with id {} deleted", id);
             return true;
         }
 
