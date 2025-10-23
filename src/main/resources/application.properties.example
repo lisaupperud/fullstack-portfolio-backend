@@ -1,3 +1,0 @@
-spring.application.name=<PROJECT_NAME>
-spring.data.mongodb.uri=<DB_CONNECTION_STRING>
-spring.data.mongodb.database=<DB_NAME>

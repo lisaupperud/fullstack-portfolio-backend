@@ -7,6 +7,8 @@ import com.liluppis.portfolioAPI.project.dto.ProjectResponseDTO;
 import com.liluppis.portfolioAPI.project.mapper.ProjectMapper;
 import com.liluppis.portfolioAPI.project.model.Project;
 import com.liluppis.portfolioAPI.project.repository.ProjectRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class ProjectServiceImpl implements IProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectMapper mapper;
+
+    private final Logger log = LoggerFactory.getLogger(ProjectServiceImpl.class);
 
     @Autowired
     public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper mapper) {
@@ -37,6 +41,7 @@ public class ProjectServiceImpl implements IProjectService {
             throw new ProjectNotFoundException("Project with id {" + id + "} not found");
         }
 
+        log.info("Project with id {} found", id);
         return project;
 
         // return projectRepository.findById(id).map(mapper::toDTO).orElseThrow();
