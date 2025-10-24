@@ -32,7 +32,6 @@ public class ProjectController {
         return ResponseEntity.ok().body(foundProject);
     }
 
-    @CrossOrigin
     @GetMapping("/")
     public ResponseEntity<List<ProjectResponseDTO>> findAll() {
         List<ProjectResponseDTO> projects = service.getAllProjects();
