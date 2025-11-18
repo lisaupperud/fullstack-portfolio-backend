@@ -1,6 +1,7 @@
 package com.liluppis.portfolioAPI.project.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -9,8 +10,8 @@ public record ProjectCreationDTO(
         String name,
         @NotBlank(message = "Project must have a description")
         String desc,
-        @NotBlank(message = "Project must contain a Link")
-        String link,
+        @NotEmpty(message = "Project must contain a Link")
+        List<String> link,
         List<String> tags,
 
         // Q: Can iconKey be null, and then be added in frontend?

@@ -6,7 +6,7 @@ public record ProjectResponseDTO(
         String id,
         String name,
         String desc,
-        String link,
+        List<String> link,
         List<String> tags,
         String iconKey
 ) {

@@ -15,7 +15,7 @@ public record Project(
         @Field(name = "description")
         String desc,
         @Field(name = "link")
-        String link,
+        List<String> link,
         @Field(name = "tags")
         List<String> tags,
         @Field(name = "iconKey")
