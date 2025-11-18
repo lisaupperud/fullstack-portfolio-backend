@@ -1,4 +1,4 @@
-package com.liluppis.portfolioAPI.admin.authority;
+/*package com.liluppis.portfolioAPI.admin.authority;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,4 +45,4 @@ public enum UserRole {
 
         return authorityList;
     }
-}
+}*/

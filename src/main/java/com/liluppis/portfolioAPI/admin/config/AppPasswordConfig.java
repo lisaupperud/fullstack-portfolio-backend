@@ -1,4 +1,4 @@
-package com.liluppis.portfolioAPI.admin.config;
+/*package com.liluppis.portfolioAPI.admin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,4 +12,4 @@ public class AppPasswordConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // TODO - Decide iterations - what is a good number?
     }
-}
+}*/
