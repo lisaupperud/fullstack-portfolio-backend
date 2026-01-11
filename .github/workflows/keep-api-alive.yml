@@ -1,6 +1,7 @@
 name: Keep Render API Alive
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'  # Runs every 10 minutes (adjust to */15 for every 15 min)
 
