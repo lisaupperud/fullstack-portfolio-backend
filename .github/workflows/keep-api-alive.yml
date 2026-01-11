@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping the API
-        run: curl -f -s -o /dev/null https://fullstack-portfolio-backend-tbnd.onrender.com/api/v1/projects/health-check  # Replace with your Render API URL (e.g., /health or root)
+        run: curl -f -s -o /dev/null https://fullstack-portfolio-backend-tbnd.onrender.com/api/v1/projects/status/health
