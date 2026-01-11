@@ -28,7 +28,7 @@ public class ProjectController {
         return ResponseEntity.ok("OK");
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = service.getProject(id);
         if (foundProject.isEmpty()) {
