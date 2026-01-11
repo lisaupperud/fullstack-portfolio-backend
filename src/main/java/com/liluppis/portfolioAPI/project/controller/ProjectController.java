@@ -23,7 +23,7 @@ public class ProjectController {
         this.service = service;
     }
 
-    @GetMapping("/health-check")
+    @GetMapping("/status/health")
     public ResponseEntity<String> healthCheck() {
         return ResponseEntity.ok("OK");
     }
