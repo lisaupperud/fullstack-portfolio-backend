@@ -28,7 +28,7 @@ public class ProjectController {
         return ResponseEntity.ok("OK");
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = service.getProject(id);
         if (foundProject.isEmpty()) {
@@ -46,7 +46,7 @@ public class ProjectController {
         return ResponseEntity.ok(projects);
     }
 
-    @GetMapping("/find/{tag}")
+    @GetMapping("/tag/{tag}")
     public ResponseEntity<List<ProjectResponseDTO>> findByTag(@PathVariable String tag) {
         List<ProjectResponseDTO> projects = service.getProjectsByTags(tag);
         if (projects.isEmpty()) {
