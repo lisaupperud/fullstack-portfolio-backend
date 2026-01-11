@@ -23,6 +23,11 @@ public class ProjectController {
         this.service = service;
     }
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("OK");
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<ProjectResponseDTO>> findById(@PathVariable String id) {
         Optional<ProjectResponseDTO> foundProject = service.getProject(id);
